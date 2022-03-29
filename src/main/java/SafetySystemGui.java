@@ -61,5 +61,10 @@ public class SafetySystemGui extends JFrame implements ActionListener {
             }
             emailPrompt.setText("");
         }
+        if (e.getSource() == send) {
+            for (var item : this.responses) {
+                item.send();
+            }
+        }
     }
 }
