@@ -1,7 +1,7 @@
 package responses;
 
 public interface ResponseKind {
-    void send();
+    void send() throws Exception;
 
     void setContent(String content);
 }
