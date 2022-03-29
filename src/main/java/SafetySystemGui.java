@@ -11,7 +11,7 @@ public class SafetySystemGui extends JFrame implements ActionListener
     private JLabel emailLabel = new JLabel("responses.Email");
     private JTextField emailPrompt= new JTextField(10);
     private JButton send = new JButton("SEND");
-    private JButton inputEmail = new JButton("Input responses.Email");
+    private JButton inputEmailBtn = new JButton("Input responses.Email");
     private JPanel emailLayout = new JPanel(new BorderLayout());
     private JTextArea contentTemplate = new JTextArea();
     private JTextArea variables = new JTextArea();
@@ -22,14 +22,14 @@ public class SafetySystemGui extends JFrame implements ActionListener
     {
         emailLayout.setMinimumSize(new Dimension(400, 400));
         setLayout(new FlowLayout());  //added
-        emailLayout.add(inputEmail, BorderLayout.SOUTH );
+        emailLayout.add(inputEmailBtn, BorderLayout.SOUTH );
         emailLayout.add(emailLabel, BorderLayout.NORTH );
         emailLayout.add(emailPrompt, BorderLayout.CENTER );
 
 
         add(emailLayout);
         emailPrompt.addActionListener( this );
-        inputEmail.addActionListener(this);
+        inputEmailBtn.addActionListener(this);
 
 
         add(send);
@@ -49,7 +49,7 @@ public class SafetySystemGui extends JFrame implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        if (e.getSource() == inputEmail) {
+        if (e.getSource() == inputEmailBtn) {
             System.out.println("ran!");
             emailPrompt.setText("");
         }
