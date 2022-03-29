@@ -37,7 +37,11 @@
         </plugins>
     </build>
     <dependencies>
-
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-gmail</artifactId>
+            <version>v1-rev20220307-1.32.1</version>
+        </dependency>
     </dependencies>
     <properties>
         <java.version>17</java.version>
