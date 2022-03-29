@@ -46,16 +46,16 @@ public class SafetySystemGui extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
+    static void errPrompt(String err) {
+        JOptionPane.showMessageDialog(new JFrame(), err, "ERROR", JOptionPane.ERROR_MESSAGE);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == inputEmailBtn) {
             var email = emailPrompt.getText();
             if (!email.matches("^(.+)@(.+)$")) {
-                JOptionPane.showMessageDialog(new JFrame(),
-                email + " is not a valid email.",
-                "ERROR",
-                JOptionPane.ERROR_MESSAGE
-                );
+                errPrompt(email + " is not a valid email.");
                 this.responses.add(new Email(emailPrompt.getText()));
                 return;
             }
