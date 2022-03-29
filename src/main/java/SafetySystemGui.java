@@ -7,10 +7,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 @SuppressWarnings("FieldCanBeLocal")
-public class SafetySystemGui extends JFrame implements ActionListener
-{
+public class SafetySystemGui extends JFrame implements ActionListener {
     private final JLabel emailLabel = new JLabel("responses.Email");
-    private final JTextField emailPrompt= new JTextField(10);
+    private final JTextField emailPrompt = new JTextField(10);
     private final JButton send = new JButton("SEND");
     private final JButton inputEmailBtn = new JButton("Input responses.Email");
     private final JPanel emailLayout = new JPanel(new BorderLayout());
@@ -19,22 +18,21 @@ public class SafetySystemGui extends JFrame implements ActionListener
     private ArrayList<ResponseKind> responses;
 
 
-    public SafetySystemGui()
-    {
+    public SafetySystemGui() {
         emailLayout.setMinimumSize(new Dimension(400, 400));
         this.setLayout(new FlowLayout());  //added
-        emailLayout.add(inputEmailBtn, BorderLayout.SOUTH );
-        emailLayout.add(emailLabel, BorderLayout.NORTH );
-        emailLayout.add(emailPrompt, BorderLayout.CENTER );
+        emailLayout.add(inputEmailBtn, BorderLayout.SOUTH);
+        emailLayout.add(emailLabel, BorderLayout.NORTH);
+        emailLayout.add(emailPrompt, BorderLayout.CENTER);
 
 
         this.add(emailLayout);
-        emailPrompt.addActionListener( this );
+        emailPrompt.addActionListener(this);
         inputEmailBtn.addActionListener(this);
 
 
         this.add(send);
-        send.addActionListener( this );
+        send.addActionListener(this);
 
         contentTemplate.setMinimumSize(new Dimension(300, 300));
         contentTemplate.setPreferredSize(new Dimension(500, 500));
@@ -43,13 +41,12 @@ public class SafetySystemGui extends JFrame implements ActionListener
         variables.setPreferredSize(new Dimension(200, 200));
         this.add(variables);
 
-        this.setSize(1920,1080);
+        this.setSize(1920, 1080);
         this.setVisible(true);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e)
-    {
+    public void actionPerformed(ActionEvent e) {
         if (e.getSource() == inputEmailBtn) {
             emailPrompt.setText("");
         }
