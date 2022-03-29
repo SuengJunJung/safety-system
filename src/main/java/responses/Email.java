@@ -1,11 +1,17 @@
 package responses;
 
-import responses.ResponseKind;
-
 public class Email implements ResponseKind {
     String rawEmail;
-    public Email(String rawEmail, String content){
+
+    String content;
+
+    public Email(String rawEmail) {
         this.rawEmail = rawEmail;
+    }
+
+    @Override
+    public void setContent(String content) {
+        this.content = content;
     }
 
     @Override

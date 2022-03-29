@@ -1,12 +1,17 @@
 package responses;
 
-import responses.ResponseKind;
-
 public class TextToSpeech implements ResponseKind {
-    public TextToSpeech(String content) {}
+    String content;
+
+    public TextToSpeech() {}
 
     @Override
     public void send() {
 
+    }
+
+    @Override
+    public void setContent(String content) {
+        this.content = content;
     }
 }

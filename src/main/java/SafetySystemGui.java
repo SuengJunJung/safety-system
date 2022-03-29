@@ -1,3 +1,4 @@
+import responses.Email;
 import responses.ResponseKind;
 
 import javax.swing.*;
@@ -15,7 +16,7 @@ public class SafetySystemGui extends JFrame implements ActionListener {
     private final JPanel emailLayout = new JPanel(new BorderLayout());
     private final JTextArea contentTemplate = new JTextArea();
     private final JTextArea variables = new JTextArea();
-    private ArrayList<ResponseKind> responses;
+    private final ArrayList<ResponseKind> responses = new ArrayList<>();
 
 
     public SafetySystemGui() {
@@ -48,6 +49,16 @@ public class SafetySystemGui extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == inputEmailBtn) {
+            var email = emailPrompt.getText();
+            if (!email.matches("^(.+)@(.+)$")) {
+                JOptionPane.showMessageDialog(new JFrame(),
+                email + " is not a valid email.",
+                "ERROR",
+                JOptionPane.ERROR_MESSAGE
+                );
+                this.responses.add(new Email(emailPrompt.getText()));
+                return;
+            }
             emailPrompt.setText("");
         }
     }
