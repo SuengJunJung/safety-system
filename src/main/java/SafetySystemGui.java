@@ -1,4 +1,4 @@
-import responses.Email;
+import exceptions.InvalidEmails;
 import responses.ResponseKind;
 
 import javax.swing.*;
@@ -9,27 +9,19 @@ import java.util.ArrayList;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class SafetySystemGui extends JFrame implements ActionListener {
-    private final JLabel emailLabel = new JLabel("responses.Email");
-    private final JTextField emailPrompt = new JTextField(10);
     private final JButton send = new JButton("SEND");
-    private final JButton inputEmailBtn = new JButton("Input responses.Email");
-    private final JPanel emailLayout = new JPanel(new BorderLayout());
     private final JTextArea contentTemplate = new JTextArea();
     private final JTextArea variables = new JTextArea();
     private final ArrayList<ResponseKind> responses = new ArrayList<>();
+    private final JButton emailBtn = new JButton();
+    private final EmailSettings emailSettings = new EmailSettings();
 
 
     public SafetySystemGui() {
-        emailLayout.setMinimumSize(new Dimension(400, 400));
         this.setLayout(new FlowLayout());  //added
-        emailLayout.add(inputEmailBtn, BorderLayout.SOUTH);
-        emailLayout.add(emailLabel, BorderLayout.NORTH);
-        emailLayout.add(emailPrompt, BorderLayout.CENTER);
 
-
-        this.add(emailLayout);
-        emailPrompt.addActionListener(this);
-        inputEmailBtn.addActionListener(this);
+        this.add(emailBtn);
+        emailBtn.addActionListener(this);
 
 
         this.add(send);
@@ -52,18 +44,23 @@ public class SafetySystemGui extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == inputEmailBtn) {
-            var email = emailPrompt.getText();
-            if (!email.matches("^(.+)@(.+)$")) {
-                errPrompt(email + " is not a valid email.");
-                this.responses.add(new Email(emailPrompt.getText()));
-                return;
-            }
-            emailPrompt.setText("");
+        if (e.getSource() == emailBtn) {
+            this.emailSettings.setVisible(true);
         }
         if (e.getSource() == send) {
+            try {
+                this.responses.addAll(this.emailSettings.getRequests());
+            } catch (InvalidEmails err) {
+                errPrompt(err.getMessage());
+                return;
+            }
             for (var item : this.responses) {
-                item.send();
+                try {
+                    item.send();
+                } catch (Exception err) {
+                    errPrompt(err.getMessage());
+                    System.exit(1);
+                }
             }
         }
     }
