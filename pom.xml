@@ -42,6 +42,11 @@
             <artifactId>google-api-services-gmail</artifactId>
             <version>v1-rev20220307-1.32.1</version>
         </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
     </dependencies>
     <properties>
         <java.version>17</java.version>
