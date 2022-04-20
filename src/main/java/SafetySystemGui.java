@@ -56,6 +56,7 @@ public class SafetySystemGui extends JFrame implements ActionListener {
             }
             for (var item : this.responses) {
                 try {
+                    item.setContent(contentTemplate.getText());
                     item.send();
                 } catch (Exception err) {
                     errPrompt(err.getMessage());
