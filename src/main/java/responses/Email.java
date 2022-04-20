@@ -52,7 +52,6 @@ public class Email implements ResponseKind {
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
         properties.put("mail.smtp.auth", "true");
-        System.out.println(creds.username + " " + creds.password);
 
         // Get the Session object.// and pass username and password
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
@@ -66,7 +65,6 @@ public class Email implements ResponseKind {
         });
 
         // Used to debug SMTP issues
-        session.setDebug(true);
         var m = new MimeMessage(session);
         m.setFrom(new InternetAddress(from));
         m.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
