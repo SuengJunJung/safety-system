@@ -11,6 +11,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/*
+Name(s): Arvinder Dhanoa, Suengjun Jung
+Assignment: Group Project
+Goals: Window to control who we send emails too, and other email related settings.
+Inputs: Emails
+Outputs: File, emails field.
+ */
 public class EmailSettings extends JFrame implements ActionListener {
     private final JTextArea emails = new JTextArea();
     private final JButton save = new JButton();
@@ -31,10 +38,18 @@ public class EmailSettings extends JFrame implements ActionListener {
         save.addActionListener(this);
     }
 
+
+    //------------------------------
+    //Displays an error to the user.
+    //------------------------------
     static void errPrompt(String err) {
         JOptionPane.showMessageDialog(new JFrame(), err, "ERROR", JOptionPane.ERROR_MESSAGE);
     }
 
+
+    //------------------------------
+    //Displays an info prompt to the user.
+    //------------------------------
     static void infoPrompt(String info) {
         JOptionPane.showMessageDialog(new JFrame(), info, "INFO", JOptionPane.INFORMATION_MESSAGE);
     }

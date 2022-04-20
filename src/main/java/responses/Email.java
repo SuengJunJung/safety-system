@@ -8,6 +8,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+/*
+Name(s): Arvinder Dhanoa, Suengjun Jung
+Assignment: Group Project
+Goals: A class that represents and sends an email.
+Inputs: stuff used to make an email.
+Outputs: EMAILS!!!!!
+ */
 public class Email implements ResponseKind {
     private static Credentials creds;
     private final String to_user;
@@ -17,6 +24,9 @@ public class Email implements ResponseKind {
         this.to_user = text;
     }
 
+    //------------------------------
+    //solves what the credentials for gmail are.
+    //------------------------------
     private static Credentials getCredentials() throws IOException {
         try (var m = new BufferedReader(new FileReader("credentials.txt"))) {
             var credentials = m.lines().limit(2).toList();
@@ -24,15 +34,9 @@ public class Email implements ResponseKind {
         }
     }
 
-    /**
-     * Create a MimeMessage using the parameters provided.
-     *
-     * @param to       email address of the receiver
-     * @param from     email address of the sender, the mailbox account
-     * @param subject  subject of the email
-     * @param bodyText body text of the email
-     * @return the MimeMessage to be used to send email
-     */
+    //------------------------------
+    //Returns a constructed MimeMessage to be sent.
+    //------------------------------
     public static MimeMessage createEmail(
     String to, String from, String subject, String bodyText
     ) throws MessagingException {
@@ -85,5 +89,9 @@ public class Email implements ResponseKind {
         this.content = content;
     }
 
+
+    //------------------------------
+    //Class to represent credentials.
+    //------------------------------
     private record Credentials(String username, String password) {}
 }

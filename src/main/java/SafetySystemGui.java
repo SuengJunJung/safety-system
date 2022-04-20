@@ -7,6 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/*
+Name(s): Arvinder Dhanoa, Suengjun Jung
+Assignment: Group Project
+Goals: Create a GUI interface that is used to send emails (and potentially other responses) to the appropriate
+people.
+Inputs: Emails, content.
+Outputs: Email.
+ */
 @SuppressWarnings("FieldCanBeLocal")
 public class SafetySystemGui extends JFrame implements ActionListener {
     private final JButton send = new JButton("SEND");
@@ -33,11 +41,12 @@ public class SafetySystemGui extends JFrame implements ActionListener {
         this.setSize(1920, 1080);
         this.setVisible(true);
     }
-
+    //------------------------------
+    //Displays an error to the user.
+    //------------------------------
     static void errPrompt(String err) {
         JOptionPane.showMessageDialog(new JFrame(), err, "ERROR", JOptionPane.ERROR_MESSAGE);
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == emailBtn) {
