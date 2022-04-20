@@ -3,18 +3,18 @@ package responses;
 /*
 Name(s): Arvinder Dhanoa, Suengjun Jung
 Assignment: Group Project
-Goals: An unused class (never finished) for text to speech!
+Goals: Log content to console.
 Inputs: content
-Outputs: audio
+Outputs: console output.
  */
-public class TextToSpeech implements ResponseKind {
+public class ConsoleLogger implements ResponseKind {
     String content;
 
-    public TextToSpeech() {}
+    public ConsoleLogger() { content = "";}
 
     @Override
     public void send() {
-
+        System.out.println(content);
     }
 
     @Override

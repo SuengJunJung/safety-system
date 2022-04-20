@@ -1,4 +1,5 @@
 import exceptions.InvalidEmails;
+import responses.ConsoleLogger;
 import responses.ResponseKind;
 
 import javax.swing.*;
@@ -59,6 +60,7 @@ public class SafetySystemGui extends JFrame implements ActionListener {
                 errPrompt(err.getMessage());
                 return;
             }
+            this.responses.add(new ConsoleLogger());
             for (var item : this.responses) {
                 try {
                     item.setContent(content.getText());
