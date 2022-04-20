@@ -21,7 +21,7 @@ public class SafetySystemGui extends JFrame implements ActionListener {
     private final JButton send = new JButton("SEND");
     private final JTextArea content = new JTextArea();
     private final ArrayList<ResponseKind> responses = new ArrayList<>();
-    private final JButton emailBtn = new JButton();
+    private final JButton emailBtn = new JButton("Email Settings");
     private final EmailSettings emailSettings = new EmailSettings();
 
 
