@@ -10,8 +10,7 @@ import java.util.ArrayList;
 @SuppressWarnings("FieldCanBeLocal")
 public class SafetySystemGui extends JFrame implements ActionListener {
     private final JButton send = new JButton("SEND");
-    private final JTextArea contentTemplate = new JTextArea();
-    private final JTextArea variables = new JTextArea();
+    private final JTextArea content = new JTextArea();
     private final ArrayList<ResponseKind> responses = new ArrayList<>();
     private final JButton emailBtn = new JButton();
     private final EmailSettings emailSettings = new EmailSettings();
@@ -27,12 +26,9 @@ public class SafetySystemGui extends JFrame implements ActionListener {
         this.add(send);
         send.addActionListener(this);
 
-        contentTemplate.setMinimumSize(new Dimension(300, 300));
-        contentTemplate.setPreferredSize(new Dimension(500, 500));
-        this.add(contentTemplate);
-
-        variables.setPreferredSize(new Dimension(200, 200));
-        this.add(variables);
+        content.setMinimumSize(new Dimension(300, 300));
+        content.setPreferredSize(new Dimension(500, 500));
+        this.add(content);
 
         this.setSize(1920, 1080);
         this.setVisible(true);
@@ -56,7 +52,7 @@ public class SafetySystemGui extends JFrame implements ActionListener {
             }
             for (var item : this.responses) {
                 try {
-                    item.setContent(contentTemplate.getText());
+                    item.setContent(content.getText());
                     item.send();
                 } catch (Exception err) {
                     errPrompt(err.getMessage());
