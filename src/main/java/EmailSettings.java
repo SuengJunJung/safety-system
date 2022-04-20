@@ -16,8 +16,7 @@ public class EmailSettings extends JFrame implements ActionListener {
     private final JButton save = new JButton();
 
     public EmailSettings() {
-        try {
-            var file = new BufferedReader(new FileReader("emails.txt"));
+        try(var file = new BufferedReader(new FileReader("emails.txt"))) {
             String emails = file.lines().map(line -> line + "\n").collect(Collectors.joining());
             this.emails.setText(emails);
         } catch (IOException e) {
