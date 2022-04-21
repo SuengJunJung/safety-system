@@ -69,6 +69,7 @@ public class SafetySystemGui extends JFrame implements ActionListener {
         if (e.getSource() == send) {
             new Thread(() -> {
                 var s = timer.getText();
+                if(!s.isEmpty()) {
                 var unit = s.charAt(s.length() - 1);
                 try {
                     int userPassedNumber = Integer.parseInt(s.substring(0, s.length() - 1));
@@ -86,6 +87,7 @@ public class SafetySystemGui extends JFrame implements ActionListener {
                 } catch (Exception err) {
                     errPrompt(err.getMessage());
                     return;
+                }
                 }
 
                 try {
